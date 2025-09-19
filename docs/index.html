@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PII Scrubber API</title>
+  <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+  <style>
+    body {
+      margin:0;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = () => {
+      const ui = SwaggerUIBundle({
+        url: "openapi.yaml",   // your spec file (place it in /docs alongside this file)
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        layout: "BaseLayout",
+        requestInterceptor: (req) => {
+          // Optional: automatically attach API key header
+          // Replace YOUR_KEY with your n8n webhook key
+          req.headers['scrubber_api_key'] = 'YOUR_KEY';
+          return req;
+        }
+      })
+      window.ui = ui
+    }
+  </script>
+</body>
+</html>
