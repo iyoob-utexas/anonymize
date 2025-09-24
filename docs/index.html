@@ -26,16 +26,16 @@
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
         ],
-        layout: "BaseLayout",
-        requestInterceptor: (req) => {
+        layout: "BaseLayout"
+        // requestInterceptor: (req) => {
           // Optional: automatically attach API key header
           // Replace YOUR_KEY with your n8n webhook key
           // req.headers['scrubber_api_key'] = scrubber_api_key;
-          return req;
-        }
-      })
-      window.ui = ui
-    }
+        //  return req;
+        // }
+      });
+      window.ui = ui;
+    };
   </script>
 </body>
 </html>
