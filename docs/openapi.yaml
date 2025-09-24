@@ -11,6 +11,8 @@ paths:
   /scrub:
     post:
       summary: Redact PII from input text
+      security:
+        - ApiKeyAuth: []
       operationId: scrubText
       requestBody:
         required: true
@@ -65,5 +67,4 @@ components:
       type: apiKey
       in: header
       name: scrubber_api_key
-security:
-  - ApiKeyAuth: []
+
